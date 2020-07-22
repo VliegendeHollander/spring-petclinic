@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 step ([$class: 'CopyArtifact',
-                        projectName: 'petclinic',
+                        projectName: 'spring-petclinic',
                         target: '/var/www']);
             }
         }
