@@ -141,8 +141,7 @@
 	      <configuration>
 	          <executable>true</executable>
 	      </configuration>
-	      </plugin>
-      <plugin>
+	    </plugin>
       <plugin>
         <groupId>io.spring.javaformat</groupId>
         <artifactId>spring-javaformat-maven-plugin</artifactId>
