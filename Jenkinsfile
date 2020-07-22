@@ -9,9 +9,6 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-                 
-            }
         }
         stage('Deploy') {
             when {
