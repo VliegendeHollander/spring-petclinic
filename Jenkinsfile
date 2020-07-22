@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'make' 
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
+                sh 'rm -rf /var/www/target' 
+                copyArtifacts(projectName: 'petclinic');
             }
         }
         stage('Test') {
