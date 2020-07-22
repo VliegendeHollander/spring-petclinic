@@ -3,12 +3,7 @@ pipeline {
 
     stages {
         stage('Build') {
-            steps {
-                sh 'rm -rf /var/www/target' 
-                // sh 'mvn package'
-            }
-        }
-        stage('Copy Archive') {
+            sh 'rm -rf /var/www/target' 
             steps {
                 step ([$class: 'CopyArtifact',
                         projectName: 'spring-petclinic',
@@ -16,6 +11,7 @@ pipeline {
                         target: '/var/www/target']);
             }
         }
+       
         stage('Deploy') {
             when {
               expression {
