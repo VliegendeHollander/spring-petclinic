@@ -6,12 +6,15 @@ pipeline {
             steps {
                 sh 'rm -rf /var/www/target' 
                 // sh 'mvn package'
+            }
+        }
+        stage('Copy Archive') {
+            steps {
                 script {
                     step ([$class: 'CopyArtifact',
                         projectName: 'spring-petclinic',
-                        // filter: "packages/infra*.zip",
-                        target: 'Infra']);
-                    }
+                        target: '/var/www/target']);
+                }
             }
         }
         stage('Deploy') {
