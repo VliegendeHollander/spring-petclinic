@@ -3,8 +3,8 @@ pipeline {
 
     stages {
         stage('Build') {
-            sh 'rm -rf /var/www/target' 
             steps {
+                sh 'rm -rf /var/www/target' 
                 step ([$class: 'CopyArtifact',
                         projectName: 'spring-petclinic',
                         filter: 'spring-petclinic-*.jar',
