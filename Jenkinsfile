@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Copy Archive') {
             steps {
-                script {
+                node {
                     step ([$class: 'CopyArtifact',
                         projectName: 'spring-petclinic',
                         filter: 'spring-petclinic-*.jar',
