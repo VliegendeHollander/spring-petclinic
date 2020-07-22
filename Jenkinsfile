@@ -8,8 +8,6 @@ pipeline {
                 copyArtifacts(projectName: 'petclinic');
             }
         }
-        stage('Test') {
-        }
         stage('Deploy') {
             when {
               expression {
