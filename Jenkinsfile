@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'rm -rf /var/www/target' 
-                copyArtifacts(projectName: 'petclinic');
+                sh 'mvn package'
+                copyArtifacts(projectName: 'spring-petclinic');
             }
         }
         stage('Deploy') {
