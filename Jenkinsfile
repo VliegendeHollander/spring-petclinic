@@ -6,8 +6,7 @@ pipeline {
             steps {
                 step ([$class: 'CopyArtifact',
                         projectName: 'spring-petclinic',
-                        filter: 'spring-petclinic-*.jar',
-                        target: '/var/www/target']);
+                        target: '/var/www']);
             }
         }
        
