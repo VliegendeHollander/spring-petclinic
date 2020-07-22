@@ -21,7 +21,8 @@ pipeline {
               }
             }
             steps {
-                sh 'make publish'
+                sh 'mv /var/www/target/spring-petclinic-*.jar /var/www/target/spring-petclinic-prod.jar'
+                sh 'sudo systemctl restart petclinic'
             }
         }
     }
