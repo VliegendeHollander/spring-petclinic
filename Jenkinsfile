@@ -6,10 +6,12 @@ pipeline {
             steps {
                 sh 'rm -rf /var/www/target' 
                 // sh 'mvn package'
-                step([  $class: 'CopyArtifact',
-                fingerprintArtifacts: true,
-                projectName: 'spring-petclinic',
-                ])  
+                script {
+                    step ([$class: 'CopyArtifact',
+                        projectName: 'spring-petclinic',
+                        // filter: "packages/infra*.zip",
+                        target: 'Infra']);
+                    }
             }
         }
         stage('Deploy') {
