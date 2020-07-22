@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'rm -rf /var/www/target' 
-                sh 'mvn package'
+                // sh 'mvn package'
                 step([  $class: 'CopyArtifact',
                 fingerprintArtifacts: true,
                 projectName: 'spring-petclinic',
