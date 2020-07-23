@@ -8,7 +8,7 @@ VOLUME /tmp
 EXPOSE 8090
 
 # The application's jar file
-ARG JAR_FILE=target/spring-petclinic-*.jar
+ARG JAR_FILE=target/spring-petclinic.jar
 
 # Add the application's jar to the container
 ADD ${JAR_FILE} spring-petclinic.jar
