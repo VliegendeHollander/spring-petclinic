@@ -37,8 +37,11 @@ pipeline {
        
         stage('Deploy') {
             steps {
-                sh 'mv /var/www/target/spring-petclinic-*.jar /var/www/target/spring-petclinic.jar'
-                sh 'sudo systemctl restart petclinic'
+                timeout(time: 1, unit: 'MINUTES') {
+                    input message: "Do you want send the jar to production?"
+                    sh 'mv /var/www/target/spring-petclinic-*.jar /var/www/target/spring-petclinic.jar'
+                    sh 'sudo systemctl restart petclinic'
+                }
             }
         }
     }
