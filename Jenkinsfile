@@ -24,7 +24,7 @@ pipeline {
 
                 sh "rm -rf /var/www/target"
 
-                mvn clean install
+                sh "mvn clean install"
         
                 step(
                 // echo "Copy artifact..."
