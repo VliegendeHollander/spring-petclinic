@@ -21,15 +21,18 @@ pipeline {
                 //     selector: lastSuccessful(), 
                 //     target: '/var/www'
                 // )
-                echo "Deleting target repository..."
-                sh 'rm -rf /var/www/target/'
-                
-                echo "Building the project..."
-                mvn clean install
-               
-                echo "Copy artifact..."
-                
                 step(
+                    // echo "Deleting target repository..."
+                    sh 'rm -rf /var/www/target/'
+                );
+
+                step(
+                    // echo "Building the project..."
+                    mvn clean install
+                );
+        
+                step(
+                // echo "Copy artifact..."
                     [$class: 'CopyArtifact',
                         projectName: 'PollsSCM',
                         target: '/var/www']
