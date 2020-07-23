@@ -26,6 +26,7 @@ pipeline {
                     input message: "Do you want send the jar to production?"
                 }
                     sh 'mv /var/www/target/spring-petclinic-*.jar /var/www/target/spring-petclinic.jar'
+                    sh 'sudo chmod +x /var/www/target/spring-petclinic.jar'
                     sh 'sudo systemctl restart petclinic'
             }
         }
