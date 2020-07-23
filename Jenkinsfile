@@ -21,13 +21,10 @@ pipeline {
                 //     selector: lastSuccessful(), 
                 //     target: '/var/www'
                 // )
-                
+
                 sh "rm -rf /var/www/target"
 
-                step(
-                    // echo "Building the project..."
-                    mvn clean install
-                )
+                mvn clean install
         
                 step(
                 // echo "Copy artifact..."
