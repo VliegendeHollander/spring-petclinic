@@ -11,8 +11,8 @@ pipeline {
                 echo "Execute mvn clean install..."
                 sh "mvn clean install -DskipTests"
         
+                echo "Copy artifact..."
                 step(
-                    echo "Copy artifact..."
                     [$class: 'CopyArtifact',
                         projectName: 'PollsSCM',
                         target: '/var/www']
