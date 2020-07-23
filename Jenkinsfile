@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'mvn clean package'
                 step ([$class: 'CopyArtifact',
                         projectName: 'spring-petclinic',
                         target: '/var/www']);
