@@ -15,17 +15,17 @@ pipeline {
                 //     url: 'https://github.com/VliegendeHollander/spring-petclinic.git']]
                 //     ])
                 // );
-                step(
-                    copyArtifacts fingerprintArtifacts: true, 
-                    projectName: 'PollsSCM', 
-                    selector: lastSuccessful(), 
-                    target: '/var/www'
-                )
+                // step(
+                //     copyArtifacts fingerprintArtifacts: true, 
+                //     projectName: 'PollsSCM', 
+                //     selector: lastSuccessful(), 
+                //     target: '/var/www'
+                // )
         
-                // step ([$class: 'CopyArtifact',
-                //         projectName: 'spring-petclinic',
-                //         target: '/var/www']
-                // );
+                step ([$class: 'CopyArtifact',
+                        projectName: 'PollsSCM',
+                        target: '/var/www']
+                );
             }
         }
        
