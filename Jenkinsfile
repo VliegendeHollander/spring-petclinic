@@ -23,7 +23,8 @@ pipeline {
                 // )
                 step(
                     // echo "Deleting target repository..."
-                    sh 'rm -rf /var/www/target/'
+                    //sh 'rm -rf /var/www/target/'
+                    sh label: 'target', script: 'rm -rf /var/www/target'
                 );
 
                 step(
