@@ -21,29 +21,26 @@ pipeline {
                 //     selector: lastSuccessful(), 
                 //     target: '/var/www'
                 // )
-                step(
-                    // echo "Deleting target repository..."
-                    //sh 'rm -rf /var/www/target/'
-                    sh label: 'target', script: 'rm -rf /var/www/target'
-                );
+                
+                sh "rm -rf /var/www/target"
 
                 step(
                     // echo "Building the project..."
                     mvn clean install
-                );
+                )
         
                 step(
                 // echo "Copy artifact..."
                     [$class: 'CopyArtifact',
                         projectName: 'PollsSCM',
                         target: '/var/www']
-                );
+                )
             }
         }
        
         stage('Deploy') {
             steps {
-                sh 'mv /var/www/target/spring-petclinic-*.jar /var/www/target/spring-petclinic-prod.jar'
+                sh 'mv /var/www/target/spring-petclinic-*.jar /var/www/target/spring-petclinic.jar'
                 sh 'sudo systemctl restart petclinic'
             }
         }
