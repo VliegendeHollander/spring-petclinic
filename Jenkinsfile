@@ -4,10 +4,28 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package'
-                step ([$class: 'CopyArtifact',
-                        projectName: 'spring-petclinic',
-                        target: '/var/www']);
+                // step(
+                //     checkout([$class: 'GitSCM', 
+                //     branches: [[name: 'main']], 
+                //     doGenerateSubmoduleConfigurations: false, 
+                //     extensions: [], 
+                //     submoduleCfg: [], 
+                //     userRemoteConfigs: 
+                //     [[credentialsId: 'dd67f719-59b1-4e47-a9fa-67b6ee7f6938', 
+                //     url: 'https://github.com/VliegendeHollander/spring-petclinic.git']]
+                //     ])
+                // );
+                step(
+                    copyArtifacts fingerprintArtifacts: true, 
+                    projectName: 'PollsSCM', 
+                    selector: lastSuccessful(), 
+                    target: '/var/www'
+                )
+        
+                // step ([$class: 'CopyArtifact',
+                //         projectName: 'spring-petclinic',
+                //         target: '/var/www']
+                // );
             }
         }
        
