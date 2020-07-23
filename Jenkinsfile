@@ -22,7 +22,7 @@ pipeline {
        
         stage('Deploy') {
             steps {
-                timeout(time: 5, unit: 'MINUTES') {
+                timeout(time: 3, unit: 'MINUTES') {
                     input message: "Do you want send the jar to production?"
                 }
                     sh 'mv /var/www/target/spring-petclinic-*.jar /var/www/target/spring-petclinic.jar'
