@@ -22,16 +22,13 @@ pipeline {
                 //     target: '/var/www'
                 // )
                 echo "Deleting target repository..."
-                step(
-                    sh 'rm -rf /var/www/target/'
-                );
-
+                sh 'rm -rf /var/www/target/'
+                
                 echo "Building the project..."
-                step(
-                    mvn clean install
-                );
-        
+                mvn clean install
+               
                 echo "Copy artifact..."
+                
                 step(
                     [$class: 'CopyArtifact',
                         projectName: 'PollsSCM',
